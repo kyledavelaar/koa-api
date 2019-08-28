@@ -12,9 +12,16 @@ async function createUser(ctx) {
   ctx.body = newUser;
 }
 
+const updateUser = async (ctx) => {
+  const id = ctx.params.id;
+  const body = ctx.request.body;
+  const updatedUser = await User.findByIdAndUpdate(id, {$set: body}, {new: true})
+  ctx.body = updatedUser;
+}
+
 module.exports = {
   getUsers,
   createUser,
-  // updateUser,
+  updateUser,
   // deleteUser
 }
