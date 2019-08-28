@@ -6,6 +6,15 @@ const getUsers = async (ctx) => {
   ctx.body = users;
 }
 
+async function createUser(ctx) {
+  const body = ctx.request.body;
+  const newUser = await User.create(body);
+  ctx.body = newUser;
+}
+
 module.exports = {
-  getUsers
+  getUsers,
+  createUser,
+  // updateUser,
+  // deleteUser
 }

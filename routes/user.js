@@ -1,10 +1,9 @@
 const Router = require('koa-router')
 const Ctrl = require('../controller/user');
 
-const router = Router({
-  prefix: '/api/users'
-})
+const router = new Router()
 
 router.get('/', Ctrl.getUsers)
+router.post('/', Ctrl.createUser)
 
-module.exports = router;
+module.exports = router.routes();
