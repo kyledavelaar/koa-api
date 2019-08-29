@@ -19,9 +19,15 @@ const updateUser = async (ctx) => {
   ctx.body = updatedUser;
 }
 
+const deleteUser = async (ctx) => {
+  const id = ctx.params.id;
+  const deletedUser = await User.findByIdAndDelete(id);
+  ctx.body = deletedUser;
+}
+
 module.exports = {
   getUsers,
   createUser,
   updateUser,
-  // deleteUser
+  deleteUser
 }
