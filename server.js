@@ -5,7 +5,6 @@ const Cors = require('@koa/cors')
 const BodyParser = require('koa-bodyparser')
 const respond = require('koa-respond')
 
-// const userRoutes = require('./routes/user');
 const Router = require('koa-router')
 const router = new Router()
 
