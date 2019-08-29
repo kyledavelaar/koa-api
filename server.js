@@ -18,11 +18,13 @@ const mongooseOptions = {
   useNewUrlParser: true,
   useFindAndModify: false,
 }
-const database = 'mongodb://localhost/koa-api';
-mongoose.connect(database, mongooseOptions, (err, db) => {
-  if (err) console.log('err', err)
-  else { console.log(` connected to ${database}`)}
-});
+// const database = 'mongodb://localhost/koa-api';
+const database = 'mongodb://database:27017/koa-api';
+mongoose.connect(database);
+// mongoose.connect(database, mongooseOptions, (err, db) => {
+//   if (err) console.log('err', err)
+//   else { console.log(` connected to ${database}`)}
+// });
 
 /////////////////////////////////////////////////
 // MIDDLEWARE
