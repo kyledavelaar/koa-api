@@ -11,7 +11,11 @@ router.get(
   Ctrl.getUsers
 )
 router.get('/:id', Middleware.authenticate, Ctrl.getUser)
-router.post('/', Ctrl.createUser)
+router.post(
+  '/',
+  Middleware.transferData,
+  Ctrl.createUser
+)
 router.put('/:id', Ctrl.updateUser)
 router.delete('/:id', Ctrl.deleteUser)
 

@@ -84,4 +84,8 @@ producer.on("error", function(err) {
 const HOST = '0.0.0.0';
 const port = process.env.PORT || 4000
 const server = app.listen(port, HOST, () => console.log(`API server started on ${port}`))
-module.exports = server;
+
+module.exports = {
+  producer: producer,
+  server: server
+}

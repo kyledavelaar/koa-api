@@ -1,3 +1,4 @@
+const kafka = require("kafka-node");
 
 async function authenticate(ctx, next) {
   const { authenticated } = ctx.request.headers;
@@ -13,7 +14,25 @@ async function alterRequest(ctx, next) {
   await next();
 }
 
+async function transferData(ctx, next) {
+  const MainApp = require('../server'); // must require inside method, otherwise MainApp will be undefined
+  console.log('transferring')
+
+  const messages = JSON.stringify(ctx.request.body)
+
+  payloads = [
+    { topic: "cat", messages, partition: 0 }
+  ];
+
+  MainApp.producer.send(payloads, function(err, data) {
+    console.log('topic_ ', payloads[0].topic, ': message sent_ ', messages);
+  });
+
+  await next();
+}
+
 module.exports = {
   authenticate,
-  alterRequest
+  alterRequest,
+  transferData,
 }
