@@ -9,8 +9,10 @@ async function authenticate(ctx, next) {
   await next();
 }
 
-async function alterRequest(ctx, next) {
-  // ctx.request.url = '/api/users?id=5d6716379a2d615d61cadf2b'
+async function addDefaultLimitOffset(ctx, next) {
+  if (!ctx.request.querystring) {
+    ctx.request.url = '/api/users?limit=5&offset=0'
+  }
   await next();
 }
 
@@ -33,6 +35,6 @@ async function transferData(ctx, next) {
 
 module.exports = {
   authenticate,
-  alterRequest,
+  addDefaultLimitOffset,
   transferData,
 }

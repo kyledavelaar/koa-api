@@ -7,16 +7,26 @@ const router = new Router()
 router.get(
   '/',
   Middleware.authenticate,
-  Middleware.alterRequest,
+  Middleware.addDefaultLimitOffset,
   Ctrl.getUsers
 )
-router.get('/:id', Middleware.authenticate, Ctrl.getUser)
+
+router.get(
+  '/:id',
+  Middleware.authenticate,
+  Ctrl.getUser
+)
+
 router.post(
   '/',
   Middleware.transferData,
   Ctrl.createUser
 )
+
 router.put('/:id', Ctrl.updateUser)
+
 router.delete('/:id', Ctrl.deleteUser)
+
+
 
 module.exports = router.routes();

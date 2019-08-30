@@ -1,13 +1,14 @@
 const User = require('../models/user');
+const querystring = require('querystring');
+
 
 
 const getUsers = async (ctx) => {
-  const id = ctx.request.querystring.split('=')[1]
-  if (id) {
-    ctx.body = await User.findById(id);
-  } else {
-    ctx.body = await User.find({})
-  }
+  const qs = querystring.parse(ctx.request.querystring)
+  const limit = Number(qs.limit);
+  const offset = Number(qs.offset);
+  ctx.body = await User.find({}).sort('name').skip(offset).limit(limit);
+
 }
 
 const getUser = async(ctx) => {
