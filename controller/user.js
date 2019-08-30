@@ -2,8 +2,17 @@ const User = require('../models/user');
 
 
 const getUsers = async (ctx) => {
-  const users = await User.find({})
-  ctx.body = users;
+  const id = ctx.request.querystring.split('=')[1]
+  if (id) {
+    ctx.body = await User.findById(id);
+  } else {
+    ctx.body = await User.find({})
+  }
+}
+
+const getUser = async(ctx) => {
+  const user = await User.findById(ctx.params.id);
+  ctx.body = user;
 }
 
 async function createUser(ctx) {
@@ -27,6 +36,7 @@ const deleteUser = async (ctx) => {
 
 module.exports = {
   getUsers,
+  getUser,
   createUser,
   updateUser,
   deleteUser
