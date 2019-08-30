@@ -4,6 +4,7 @@ async function authenticate(ctx, next) {
   const { authenticated } = ctx.request.headers;
   console.log('authenticated', authenticated)
   if (authenticated !== 'true') {
+    ctx.response.status = 401;
     return ctx.body = 'you are not authenticated'
   }
   await next();

@@ -8,7 +8,6 @@ const getUsers = async (ctx) => {
   const limit = Number(qs.limit);
   const offset = Number(qs.offset);
   ctx.body = await User.find({}).sort('name').skip(offset).limit(limit);
-
 }
 
 const getUser = async(ctx) => {
