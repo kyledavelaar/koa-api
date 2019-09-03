@@ -21,7 +21,7 @@ const mongooseOptions = {
   useFindAndModify: false,
 }
 const database = 'mongodb://localhost/koa-api';
-// const database = 'mongodb://database:27017/koa-api';
+// const database = 'mongodb://database:27017/koa-api';  // use when in docker
 
 mongoose.connect(database, mongooseOptions, (err, db) => {
   if (err) console.log('err', err)
@@ -75,6 +75,13 @@ producer.on("ready", function() {
 producer.on("error", function(err) {
   console.log(err);
 });
+
+
+
+
+
+
+
 
 
 
