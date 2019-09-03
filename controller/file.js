@@ -9,9 +9,9 @@ const writeStream = (ctx) => {
   ctx.body = s;
 }
 
-const getFile = (ctx) => {
-  const src = fs.createReadStream('./bigfile.txt');
+const getFile = async (ctx) => {
   ctx.response.set("content-type", "txt/html");
+  const src = await fs.createReadStream('./bigfile.txt');
   ctx.body = src;
 }
 
