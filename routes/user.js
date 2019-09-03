@@ -4,6 +4,7 @@ const Middleware = require('../middleware/utils');
 
 const router = new Router()
 
+
 router.get(
   '/',
   Middleware.authenticate,
@@ -26,6 +27,9 @@ router.post(
 router.put('/:id', Ctrl.updateUser)
 
 router.delete('/:id', Ctrl.deleteUser)
+
+
+
 
 
 

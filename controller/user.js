@@ -2,7 +2,6 @@ const User = require('../models/user');
 const querystring = require('querystring');
 
 
-
 const getUsers = async (ctx) => {
   const qs = querystring.parse(ctx.request.querystring)
   const limit = Number(qs.limit);
@@ -10,7 +9,7 @@ const getUsers = async (ctx) => {
   ctx.body = await User.find({}).sort('name').skip(offset).limit(limit);
 }
 
-const getUser = async(ctx) => {
+const getUser = async (ctx) => {
   const user = await User.findById(ctx.params.id);
   ctx.body = user;
 }
@@ -39,5 +38,5 @@ module.exports = {
   getUser,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
 }
