@@ -111,13 +111,14 @@ const stdinTransform = new Transform({
     // text = _.trim(text);
     console.log(`pushing message ${text} to ExampleTopic`);
     callback(null, {
-      topic: 'ExampleTopic',
+      topic: 'cat',
       messages: text
     });
   }
 });
 
 process.stdin.setEncoding('utf8');
+// console.log('stdin', process.stdin);
 process.stdin.pipe(stdinTransform).pipe(producerStream);
 
 
@@ -145,6 +146,6 @@ const port = process.env.PORT || 4000
 const server = app.listen(port, HOST, () => console.log(`API server started on ${port}`))
 
 module.exports = {
-  producer: producer,
-  server: server
+  producer,
+  server
 }
